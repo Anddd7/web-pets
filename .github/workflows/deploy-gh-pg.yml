@@ -32,6 +32,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          VITE_BASE_URL: /web-pets/
 
       - name: Deploy dist to gh-pg
         uses: peaceiris/actions-gh-pages@v4
