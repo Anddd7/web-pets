@@ -64,19 +64,19 @@ const TaskList: React.FC<TaskListProps> = ({
   return (
     <div className="flex flex-col h-full">
       {/* 分类选择器 */}
-      <div className="flex h-14 min-h-14 flex-shrink-0 items-center overflow-x-auto mb-4 scrollbar-hide pb-4">
+      <div className="mb-4 flex h-14 min-h-14 flex-shrink-0 items-center overflow-x-auto pb-4 scrollbar-hide md:mb-5 md:h-16 md:min-h-16">
         {categories.map(category => (
           <motion.button
             key={category.id}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex h-10 min-h-10 flex-shrink-0 items-center whitespace-nowrap px-4 rounded-full mr-2 leading-none ${
+            className={`mr-2 inline-flex h-10 min-h-10 flex-shrink-0 items-center whitespace-nowrap rounded-full px-4 leading-none md:h-12 md:min-h-12 md:px-5 md:text-base ${
               selectedCategory === category.id 
                 ? 'bg-primary text-white font-bold' 
                 : 'bg-gray-100 text-gray-700'
             }`}
             onClick={() => onSelectCategory(category.id as TaskCategory | 'all')}
           >
-            <span className="mr-2">{category.icon}</span>
+            <span className="mr-2 md:text-lg">{category.icon}</span>
             {category.name}
           </motion.button>
         ))}
@@ -90,7 +90,7 @@ const TaskList: React.FC<TaskListProps> = ({
             <p className="text-lg">没有找到任务</p>
           </div>
         ) : (
-          <div className="space-y-4 pt-1">
+          <div className="space-y-4 pt-1 md:space-y-5">
             {filteredTasks.map(task => {
               const isExpired = getIsTaskExpired(task);
               const isDisabled = task.completedToday || isExpired;
@@ -101,7 +101,7 @@ const TaskList: React.FC<TaskListProps> = ({
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   whileTap={!isDisabled ? { scale: 0.98 } : undefined}
-                  className={`bg-white rounded-xl p-4 shadow-sm border ${
+                  className={`rounded-xl border bg-white p-4 shadow-sm md:p-5 ${
                     task.completedToday
                       ? 'border-green-200 bg-green-50'
                       : isExpired
@@ -113,7 +113,7 @@ const TaskList: React.FC<TaskListProps> = ({
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
+                        className={`mr-3 flex h-10 w-10 items-center justify-center rounded-full md:h-12 md:w-12 md:text-lg ${
                           task.completedToday
                             ? 'bg-green-500 text-white'
                             : isExpired
@@ -125,23 +125,23 @@ const TaskList: React.FC<TaskListProps> = ({
                       </div>
 
                       <div>
-                        <h3 className={`font-bold ${task.completedToday ? 'text-gray-500 line-through' : 'text-gray-800'}`}>
+                        <h3 className={`font-bold md:text-lg ${task.completedToday ? 'text-gray-500 line-through' : 'text-gray-800'}`}>
                           {task.name}
                         </h3>
-                        <p className={`text-sm ${task.completedToday ? 'text-gray-400' : 'text-gray-600'}`}>
+                        <p className={`text-sm md:text-base ${task.completedToday ? 'text-gray-400' : 'text-gray-600'}`}>
                           {task.description}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex flex-col items-end">
-                      <span className="text-yellow-500 font-bold flex items-center">
+                      <span className="flex items-center font-bold text-yellow-500 md:text-lg">
                         <span className="mr-1">💰</span>
                         {task.reward}
                       </span>
 
                       {task.timeRange && (
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-gray-500 md:text-sm">
                           {task.timeRange.start} - {task.timeRange.end}
                         </span>
                       )}
@@ -149,13 +149,13 @@ const TaskList: React.FC<TaskListProps> = ({
                   </div>
 
                   {task.completedToday && (
-                    <div className="mt-2 text-xs text-green-600 flex items-center justify-end">
+                    <div className="mt-2 flex items-center justify-end text-xs text-green-600 md:text-sm">
                       <span className="mr-1">✓ 已完成</span>
                     </div>
                   )}
 
                   {isExpired && !task.completedToday && (
-                    <div className="mt-2 text-xs text-gray-500 flex items-center justify-end">
+                    <div className="mt-2 flex items-center justify-end text-xs text-gray-500 md:text-sm">
                       <span className="mr-1">⏰ 已过期</span>
                     </div>
                   )}

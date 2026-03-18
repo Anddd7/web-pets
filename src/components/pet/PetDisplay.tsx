@@ -63,9 +63,9 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full">
+    <div className="relative flex w-full flex-col items-center justify-center">
       {/* 宠物状态指示器 */}
-      <div className="w-full max-w-md flex justify-between gap-2 px-2 mb-4 z-10">
+      <div className="z-10 mb-4 flex w-full max-w-md justify-between gap-2 px-2 md:mb-6 md:max-w-2xl md:gap-3 md:px-0">
         <div className="flex flex-1 items-center bg-white bg-opacity-70 rounded-full px-2 py-1 min-w-0">
           <span className="text-red-500 mr-1">🍖</span>
           <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -122,11 +122,11 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
           },
         }}
       >
-        <div className="w-64 h-64 rounded-full border-4 border-white bg-white/70 shadow-md overflow-hidden flex items-center justify-center">
+        <div className="flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-white/70 shadow-md md:h-80 md:w-80">
           <img 
             src={getCurrentImage()} 
             alt={pet.name} 
-            className="w-56 h-56 object-contain"
+            className="h-56 w-56 object-contain md:h-72 md:w-72"
           />
         </div>
         
@@ -139,16 +139,16 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
       </motion.div>
       
       {/* 宠物名称 */}
-      <div className="mt-2 bg-white bg-opacity-70 rounded-full px-4 py-1 text-lg font-bold">
+      <div className="mt-3 rounded-full bg-white bg-opacity-70 px-4 py-1 text-lg font-bold md:px-5 md:py-1.5 md:text-2xl">
         {pet.name}
       </div>
       
       {/* 交互按钮 */}
       {!isSleeping && (
-        <div className="mt-4 flex space-x-4">
+        <div className="mt-4 flex space-x-4 md:mt-6 md:space-x-5">
           <motion.button
             whileTap={{ scale: 0.9 }}
-            className="bg-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-xl text-white md:h-14 md:w-14 md:text-2xl"
             onClick={() => onInteract('play')}
           >
             🎮
@@ -156,7 +156,7 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
           
           <motion.button
             whileTap={{ scale: 0.9 }}
-            className="bg-yellow-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500 text-xl text-white md:h-14 md:w-14 md:text-2xl"
             onClick={() => onInteract('pet')}
           >
             🖐️
@@ -164,7 +164,7 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
           
           <motion.button
             whileTap={{ scale: 0.9 }}
-            className="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-xl text-white md:h-14 md:w-14 md:text-2xl"
             onClick={() => onInteract('clean')}
           >
             🧽
@@ -173,7 +173,7 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
       )}
 
       {extraRow && (
-        <div className="mt-3 w-full max-w-md">
+        <div className="mt-4 w-full max-w-md md:mt-5 md:max-w-2xl">
           {extraRow}
         </div>
       )}

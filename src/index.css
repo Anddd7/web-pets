@@ -35,3 +35,9 @@ textarea,
 select {
   font-family: inherit;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  html {
+    font-size: 18px;
+  }
+}

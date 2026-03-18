@@ -172,13 +172,13 @@ const Home: React.FC = () => {
     .filter((item): item is NonNullable<ReturnType<typeof getItemById>> => !!item);
 
   const quickUseItemRow = ownedItems.length > 0 && !isSleeping ? (
-    <div className="bg-white/80 rounded-2xl p-3 shadow-sm">
-      <div className="flex flex-wrap gap-2">
+    <div className="bg-white/80 rounded-2xl p-3 shadow-sm md:px-4 md:py-3.5">
+      <div className="flex flex-wrap justify-center gap-2 md:gap-3">
         {ownedItems.map(item => (
           <motion.button
             key={item.id}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex w-12 h-12 items-center justify-center`}
+            className="inline-flex h-12 w-12 items-center justify-center md:h-14 md:w-14"
             onClick={() => handleUseOwnedItem(item.id)}
             title={item.name}
             aria-label={item.name}
@@ -186,7 +186,7 @@ const Home: React.FC = () => {
             <img
               src={item.imageUrl}
               alt={item.name}
-              className="w-10 h-10 object-contain"
+              className="h-10 w-10 object-contain md:h-12 md:w-12"
             />
           </motion.button>
         ))}
@@ -196,91 +196,91 @@ const Home: React.FC = () => {
 
   return (
     <div
-      className="flex flex-col h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-4"
+      className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 px-4 py-4 md:px-6 md:py-6"
       style={{ paddingTop: 'max(env(safe-area-inset-top), 1rem)' }}
     >
-      {/* 顶部栏 */}
-      <div className="flex justify-between items-center mb-4">
-        <div>
-          <h1 className="text-2xl font-bold text-primary">{getGreeting()}！</h1>
-          <p className="text-gray-600">{formatTime(currentTime)}</p>
-        </div>
-        
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center bg-yellow-100 rounded-full px-3 py-1">
-            <span className="text-yellow-500 mr-2">💰</span>
-            <span className="font-bold">{taskState.totalCoins}</span>
+      <div className="mx-auto flex h-[calc(100vh-max(env(safe-area-inset-top),1rem)-1rem)] w-full max-w-4xl flex-col md:h-[calc(100vh-max(env(safe-area-inset-top),1rem)-1.5rem)]">
+        {/* 顶部栏 */}
+        <div className="mb-5 flex items-center justify-between md:mb-6">
+          <div>
+            <h1 className="text-2xl font-bold text-primary md:text-3xl">{getGreeting()}！</h1>
+            <p className="text-gray-600 md:text-base">{formatTime(currentTime)}</p>
           </div>
-          
+
+          <div className="flex items-center space-x-3 md:space-x-4">
+            <div className="flex items-center rounded-full bg-yellow-100 px-3 py-1 md:px-4 md:py-1.5">
+              <span className="mr-2 text-yellow-500">💰</span>
+              <span className="font-bold md:text-lg">{taskState.totalCoins}</span>
+            </div>
+
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
+              onClick={() => window.location.href = '/tasks'}
+            >
+              <span className="text-lg md:text-xl">📋</span>
+            </motion.button>
+
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
+              onClick={() => window.location.href = '/shop'}
+            >
+              <span className="text-lg md:text-xl">🛍️</span>
+            </motion.button>
+          </div>
+        </div>
+
+        {/* 主要内容区 */}
+        <div className="relative flex flex-grow flex-col items-center justify-center">
+          <PetDisplay
+            pet={selectedPet}
+            onInteract={handlePetInteract}
+            isSleeping={isSleeping}
+            extraRow={quickUseItemRow}
+          />
+
+          {/* 语音气泡 */}
+          {showSpeechBubble && speechMessage && !isSleeping && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute right-0 top-12 z-20 max-w-xs rounded-2xl bg-white p-4 shadow-lg md:right-4 md:top-16 md:max-w-sm"
+            >
+              <p className="text-gray-800 md:text-base">{speechMessage}</p>
+            </motion.div>
+          )}
+        </div>
+
+        {/* 底部栏 */}
+        <div className="mt-5 flex items-center justify-between md:mt-6">
+          {isSupported && !isSleeping ? (
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              className={`flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm md:h-16 md:w-16 ${
+                isListening ? 'bg-green-100' : ''
+              }`}
+              onClick={handleVoiceButtonClick}
+            >
+              <span className="text-2xl md:text-3xl">
+                {isListening ? '🔴' : '🎤'}
+              </span>
+            </motion.button>
+          ) : (
+            <div className="h-14 w-14 md:h-16 md:w-16" />
+          )}
+
+          <div className="flex-grow" />
+
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm"
-            onClick={() => window.location.href = '/tasks'}
+            className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm md:h-16 md:w-16"
+            onClick={() => window.location.href = '/settings'}
           >
-            <span className="text-lg">📋</span>
-          </motion.button>
-          
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm"
-            onClick={() => window.location.href = '/shop'}
-          >
-            <span className="text-lg">🛍️</span>
+            <span className="text-2xl md:text-3xl">⚙️</span>
           </motion.button>
         </div>
-      </div>
-
-      {/* 主要内容区 */}
-      <div className="flex-grow flex flex-col items-center justify-center relative">
-        {/* 宠物显示 */}
-        <PetDisplay 
-          pet={selectedPet} 
-          onInteract={handlePetInteract}
-          isSleeping={isSleeping}
-          extraRow={quickUseItemRow}
-        />
-        
-        {/* 语音气泡 */}
-        {showSpeechBubble && speechMessage && !isSleeping && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="absolute top-6 right-4 bg-white rounded-2xl p-4 shadow-lg max-w-xs z-20"
-          >
-            <p className="text-gray-800">{speechMessage}</p>
-          </motion.div>
-        )}
-      </div>
-
-      {/* 底部栏 */}
-      <div className="flex justify-between items-center mt-4">
-        {/* 语音按钮 */}
-        {isSupported && !isSleeping && (
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className={`bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-sm ${
-              isListening ? 'bg-green-100' : ''
-            }`}
-            onClick={handleVoiceButtonClick}
-          >
-            <span className="text-2xl">
-              {isListening ? '🔴' : '🎤'}
-            </span>
-          </motion.button>
-        )}
-        
-        {/* 中间的空白区域，保持按钮居中 */}
-        <div className="flex-grow"></div>
-        
-        {/* 设置按钮 */}
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-sm"
-          onClick={() => window.location.href = '/settings'}
-        >
-          <span className="text-2xl">⚙️</span>
-        </motion.button>
       </div>
     </div>
   );

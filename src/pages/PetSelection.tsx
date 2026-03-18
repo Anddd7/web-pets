@@ -33,33 +33,34 @@ const PetSelection: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 px-4 py-4 md:px-6 md:py-6">
+      <div className="mx-auto flex h-[calc(100vh-2rem)] w-full max-w-5xl flex-col md:h-[calc(100vh-3rem)]">
       {/* 标题 */}
-      <div className="text-center mb-6">
-        <h1 className="text-3xl font-bold text-primary">选择你的宠物</h1>
-        <p className="text-gray-600 mt-2">点击宠物查看详情，然后给它起个名字吧！</p>
+      <div className="mb-6 text-center md:mb-8">
+        <h1 className="text-3xl font-bold text-primary md:text-4xl">选择你的宠物</h1>
+        <p className="mt-2 text-gray-600 md:text-lg">点击宠物查看详情，然后给它起个名字吧！</p>
       </div>
 
       {!showNameInput ? (
         // 宠物选择列表
-        <div className="grid grid-cols-2 gap-4 overflow-y-auto flex-grow">
+        <div className="grid flex-grow grid-cols-2 gap-4 overflow-y-auto md:gap-5">
           {state.availablePets.map(pet => (
             <motion.div
               key={pet.id}
               whileTap={{ scale: 0.95 }}
-              className="bg-white rounded-xl p-4 shadow-md cursor-pointer border-2 border-transparent hover:border-primary"
+              className="cursor-pointer rounded-xl border-2 border-transparent bg-white p-4 shadow-md hover:border-primary md:p-5"
               onClick={() => handlePetSelect(pet)}
             >
               <div className="flex flex-col items-center">
-                <div className="w-32 h-32 mb-3">
+                <div className="mb-3 h-32 w-32 md:h-40 md:w-40">
                   <img 
                     src={pet.imageUrl} 
                     alt={pet.name} 
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="font-bold text-lg">{pet.name}</h3>
-                <p className="text-sm text-gray-600 text-center mt-1">{pet.description}</p>
+                <h3 className="text-lg font-bold md:text-xl">{pet.name}</h3>
+                <p className="mt-1 text-center text-sm text-gray-600 md:text-base">{pet.description}</p>
               </div>
             </motion.div>
           ))}
@@ -70,22 +71,22 @@ const PetSelection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-xl p-6 shadow-lg w-full max-w-md"
+            className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg md:max-w-xl md:p-8"
           >
-            <div className="flex flex-col items-center mb-6">
-              <div className="w-48 h-48 mb-4">
+            <div className="mb-6 flex flex-col items-center md:mb-7">
+              <div className="mb-4 h-48 w-48 md:h-56 md:w-56">
                 <img 
                   src={selectedPet ? selectedPet.imageUrl : ''} 
                   alt={selectedPet?.name || ''} 
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-bold text-xl">{selectedPet?.name}</h3>
-              <p className="text-sm text-gray-600 text-center mt-1">{selectedPet?.description}</p>
+              <h3 className="text-xl font-bold md:text-2xl">{selectedPet?.name}</h3>
+              <p className="mt-1 text-center text-sm text-gray-600 md:text-base">{selectedPet?.description}</p>
             </div>
             
-            <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2" htmlFor="petName">
+            <div className="mb-4 md:mb-5">
+              <label className="mb-2 block font-bold text-gray-700 md:text-lg" htmlFor="petName">
                 给你的宠物起个名字：
               </label>
               <input
@@ -93,7 +94,7 @@ const PetSelection: React.FC = () => {
                 id="petName"
                 value={petName}
                 onChange={(e) => setPetName(e.target.value)}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary md:py-3 md:text-lg"
                 placeholder="输入宠物名字"
                 maxLength={10}
               />
@@ -102,7 +103,7 @@ const PetSelection: React.FC = () => {
             <div className="flex space-x-3">
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className="flex-1 bg-gray-200 text-gray-700 rounded-lg py-2 font-bold"
+                className="flex-1 rounded-lg bg-gray-200 py-2 font-bold text-gray-700 md:py-3 md:text-lg"
                 onClick={() => setShowNameInput(false)}
               >
                 返回
@@ -110,7 +111,7 @@ const PetSelection: React.FC = () => {
               
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                className="flex-1 bg-primary text-white rounded-lg py-2 font-bold"
+                className="flex-1 rounded-lg bg-primary py-2 font-bold text-white md:py-3 md:text-lg"
                 onClick={handleAdopt}
                 disabled={!petName.trim()}
                 style={{ opacity: petName.trim() ? 1 : 0.5 }}
@@ -121,6 +122,7 @@ const PetSelection: React.FC = () => {
           </motion.div>
         </div>
       )}
+      </div>
     </div>
   );
 };

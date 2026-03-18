@@ -70,37 +70,38 @@ const TasksPage: React.FC = () => {
   const totalRewardToday = completedTasksToday.reduce((sum, task) => sum + task.reward, 0);
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-b from-blue-100 to-purple-100 p-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-purple-100 px-4 py-4 md:px-6 md:py-6">
+      <div className="mx-auto flex h-[calc(100vh-2rem)] w-full max-w-5xl flex-col md:h-[calc(100vh-3rem)]">
       {/* 顶部栏 */}
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4 flex items-center justify-between md:mb-6">
         <motion.button
           whileTap={{ scale: 0.95 }}
-          className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-sm"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
           onClick={() => window.location.href = '/'}
         >
-          <span className="text-lg">←</span>
+          <span className="text-lg md:text-xl">←</span>
         </motion.button>
         
-        <h1 className="text-2xl font-bold text-primary">每日任务</h1>
+        <h1 className="text-2xl font-bold text-primary md:text-3xl">每日任务</h1>
         
-        <div className="flex items-center bg-yellow-100 rounded-full px-3 py-1">
-          <span className="text-yellow-500 mr-2">💰</span>
-          <span className="font-bold">{state.totalCoins}</span>
+        <div className="flex items-center rounded-full bg-yellow-100 px-3 py-1 md:px-4 md:py-1.5">
+          <span className="mr-2 text-yellow-500 md:text-lg">💰</span>
+          <span className="font-bold md:text-lg">{state.totalCoins}</span>
         </div>
       </div>
 
       {/* 今日进度 */}
-      <div className="bg-white rounded-xl p-4 shadow-sm mb-4">
+      <div className="mb-4 rounded-xl bg-white p-4 shadow-sm md:mb-5 md:p-5">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="font-bold text-gray-800">今日进度</h2>
-            <p className="text-sm text-gray-600">
+            <h2 className="font-bold text-gray-800 md:text-xl">今日进度</h2>
+            <p className="text-sm text-gray-600 md:text-base">
               已完成 {completedTasksToday.length}/{state.tasks.length} 个任务
             </p>
           </div>
           <div className="text-right">
-            <p className="font-bold text-yellow-500">今日收入</p>
-            <p className="text-sm text-gray-600">{totalRewardToday} 金币</p>
+            <p className="font-bold text-yellow-500 md:text-lg">今日收入</p>
+            <p className="text-sm text-gray-600 md:text-base">{totalRewardToday} 金币</p>
           </div>
         </div>
         
@@ -116,13 +117,14 @@ const TasksPage: React.FC = () => {
       </div>
 
       {/* 任务列表 */}
-      <div className="flex-grow bg-white rounded-xl p-4 shadow-sm overflow-hidden">
+      <div className="flex-grow overflow-hidden rounded-xl bg-white p-4 shadow-sm md:p-5">
         <TaskList
           tasks={state.tasks}
           onTaskClick={handleTaskClick}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
         />
+      </div>
       </div>
 
       {/* 任务确认对话框 */}

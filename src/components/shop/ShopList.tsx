@@ -47,15 +47,15 @@ const ShopList: React.FC<ShopListProps> = ({
   return (
     <div className="flex flex-col h-full">
       {/* 顶部栏 */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center bg-yellow-100 rounded-full px-3 py-1">
-          <span className="text-yellow-500 mr-2">💰</span>
-          <span className="font-bold">{coins}</span>
+      <div className="mb-4 flex items-center justify-between md:mb-5">
+        <div className="flex items-center rounded-full bg-yellow-100 px-3 py-1 md:px-4 md:py-1.5">
+          <span className="mr-2 text-yellow-500 md:text-lg">💰</span>
+          <span className="font-bold md:text-lg">{coins}</span>
         </div>
         
         <motion.button
           whileTap={{ scale: 0.95 }}
-          className={`px-3 py-1 rounded-full text-sm ${
+          className={`rounded-full px-3 py-1 text-sm md:px-4 md:py-1.5 md:text-base ${
             showOwnedOnly 
               ? 'bg-primary text-white' 
               : 'bg-gray-200 text-gray-700'
@@ -67,19 +67,19 @@ const ShopList: React.FC<ShopListProps> = ({
       </div>
 
       {/* 分类选择器 */}
-      <div className="flex h-14 min-h-14 flex-shrink-0 items-center overflow-x-auto mb-4 scrollbar-hide pb-2">
+      <div className="mb-4 flex h-14 min-h-14 flex-shrink-0 items-center overflow-x-auto pb-2 scrollbar-hide md:mb-5 md:h-16 md:min-h-16">
         {categories.map(category => (
           <motion.button
             key={category.id}
             whileTap={{ scale: 0.95 }}
-            className={`inline-flex h-10 min-h-10 flex-shrink-0 items-center whitespace-nowrap px-4 rounded-full mr-2 leading-none ${
+            className={`mr-2 inline-flex h-10 min-h-10 flex-shrink-0 items-center whitespace-nowrap rounded-full px-4 leading-none md:h-12 md:min-h-12 md:px-5 md:text-base ${
               selectedCategory === category.id 
                 ? 'bg-primary text-white font-bold' 
                 : 'bg-gray-100 text-gray-700'
             }`}
             onClick={() => onSelectCategory(category.id as ShopItemType)}
           >
-            <span className="mr-2">{category.icon}</span>
+            <span className="mr-2 md:text-lg">{category.icon}</span>
             {category.name}
           </motion.button>
         ))}
@@ -95,20 +95,20 @@ const ShopList: React.FC<ShopListProps> = ({
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
             {filteredItems.map(item => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className={`bg-white rounded-xl p-4 shadow-sm border ${
+                className={`rounded-xl border bg-white p-4 shadow-sm md:p-5 ${
                   item.isOwned 
                     ? 'border-green-200 bg-green-50' 
                     : 'border-gray-200'
                 }`}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 flex items-center justify-center mb-2">
+                  <div className="mb-3 flex h-24 w-24 items-center justify-center md:h-28 md:w-28">
                     <img 
                       src={item.imageUrl} 
                       alt={item.name} 
@@ -116,10 +116,10 @@ const ShopList: React.FC<ShopListProps> = ({
                     />
                   </div>
                   
-                  <h3 className="font-bold text-center mb-1">{item.name}</h3>
+                  <h3 className="mb-1 text-center font-bold md:text-lg">{item.name}</h3>
                   
                   {item.effect && (
-                    <p className="text-xs text-gray-600 text-center mb-2">
+                    <p className="mb-3 text-center text-xs text-gray-600 md:text-sm">
                       {getEffectDescription(item)}
                     </p>
                   )}
@@ -127,20 +127,20 @@ const ShopList: React.FC<ShopListProps> = ({
                   {item.isOwned ? (
                     <motion.button
                       whileTap={{ scale: 0.9 }}
-                      className="w-full bg-green-500 text-white rounded-full py-1 text-sm font-bold"
+                      className="w-full rounded-full bg-green-500 py-1.5 text-sm font-bold text-white md:py-2 md:text-base"
                       onClick={() => onUseItem(item.id)}
                     >
                       {item.type === 'food' ? '使用' : '穿戴'}
                     </motion.button>
                   ) : (
                     <div className="w-full flex items-center justify-between">
-                      <span className="text-yellow-500 font-bold">
+                      <span className="font-bold text-yellow-500 md:text-lg">
                         {item.price} 💰
                       </span>
                       
                       <motion.button
                         whileTap={{ scale: 0.9 }}
-                        className={`bg-primary text-white rounded-full px-3 py-1 text-sm font-bold ${
+                        className={`rounded-full bg-primary px-3 py-1 text-sm font-bold text-white md:px-4 md:py-1.5 md:text-base ${
                           coins < item.price ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                         onClick={() => coins >= item.price && onBuyItem(item.id)}
