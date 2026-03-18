@@ -4,6 +4,7 @@
     "name": "小猫",
     "description": "好奇又亲人的小猫，喜欢晒太阳。",
     "assetFile": "cat-right.png",
+    "imageUrl": "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/0480e78efa334b83a6f22f34668ad995.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168128&x-signature=yeApQWP2uWZuTgxW8q9XDPrCwmo%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "right",
     "layout": {
@@ -25,6 +26,7 @@
     "name": "小狗",
     "description": "活力满满的小狗，总想和你一起玩。",
     "assetFile": "dog-left.png",
+    "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/7a4694635b7e408d8b5cda334dcf65f7.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168129&x-signature=UTiS68J%2BItR2Ojuegnt1dTsfnyE%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "left",
     "layout": {
@@ -46,6 +48,7 @@
     "name": "兔兔",
     "description": "软萌安静的兔兔，最爱胡萝卜。",
     "assetFile": "rabbit.png",
+    "imageUrl":"https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/27855b87b5634bf49a9e003d4d988f06.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168128&x-signature=z%2F6AQXp%2BzQbqln%2FOu%2FJMUm50%2B3s%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "center",
     "layout": {
@@ -67,6 +70,7 @@
     "name": "小熊",
     "description": "圆滚滚的小熊，憨厚又可靠。",
     "assetFile": "bear.png",
+    "imageUrl":"https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/f292238a63c94b5582f30d833f564491.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168129&x-signature=SDk2m%2BF%2B%2Fpbuy27oScfUu%2BVpmck%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "center",
     "layout": {
@@ -88,6 +92,7 @@
     "name": "小鹿",
     "description": "灵动温柔的小鹿，跑起来像风一样。",
     "assetFile": "deer-left.png",
+    "imageUrl":"https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/1108933462ff450b8a4c35a52bab54f1.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168129&x-signature=rt21KH0ywB1z%2FWEw3ivXuu1ItxI%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "left",
     "layout": {
@@ -109,6 +114,7 @@
     "name": "小狐狸",
     "description": "机灵的小狐狸，眼神里全是故事。",
     "assetFile": "fox-left.png",
+    "imageUrl":"https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/b2c9ff9f4bf84e5784b7e6288fc08fdd.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168128&x-signature=5Ou3xIFfCh%2FFYd2wPZwiBGSwbt4%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "left",
     "layout": {
@@ -130,6 +136,7 @@
     "name": "仓鼠",
     "description": "小小的仓鼠，储粮和打滚样样精通。",
     "assetFile": "hamster.png",
+    "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/e4fa0d6ff74049938f7df42b681f0225.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122636225701A19E85145C603F&rrcfp=ddbb2dc7&x-expires=2089168018&x-signature=CAyqXkLC%2B0WlvBVPEqDWDPSDjjI%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "center",
     "layout": {
@@ -151,6 +158,7 @@
     "name": "企鹅",
     "description": "摇摇摆摆的企鹅，爱冰也爱拥抱。",
     "assetFile": "penguin.png",
+    "imageUrl": "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc_gen_image/43a009d6fddc481a87364c321c559dac.jpeg~tplv-a9rns2rl98-image_pre_watermark_1_5b.png?lk3s=8e244e95&rcl=20260318122827B0478AF4978842607422&rrcfp=ddbb2dc7&x-expires=2089168128&x-signature=foIT%2FhXHgwBxH1vKUeCWnxBZFoY%3D",
     "statusOptions": ["normal", "sleeping"],
     "orientation": "center",
     "layout": {

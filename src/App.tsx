@@ -7,13 +7,13 @@ import SettingsPage from './pages/SettingsPage';
 import { PetProvider } from './contexts/PetContext';
 import { TaskProvider } from './contexts/TaskContext';
 import { ShopProvider } from './contexts/ShopContext';
-import { normalizePath } from './utils/navigation';
+import { getAppPath } from './utils/navigation';
 
 const AppContent: React.FC = () => {
-  const [path, setPath] = useState(() => normalizePath(window.location.pathname));
+  const [path, setPath] = useState(() => getAppPath(window.location.pathname));
 
   useEffect(() => {
-    const onPopState = () => setPath(normalizePath(window.location.pathname));
+    const onPopState = () => setPath(getAppPath(window.location.pathname));
     window.addEventListener('popstate', onPopState);
     return () => window.removeEventListener('popstate', onPopState);
   }, []);

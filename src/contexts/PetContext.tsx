@@ -9,6 +9,7 @@ type RawPetDefinition = {
   name: string;
   description: string;
   assetFile: string;
+  imageUrl?: string;
   statusOptions: Array<'normal' | 'sleeping'>;
   orientation: 'left' | 'right' | 'center';
   layout: PetType['layout'];
@@ -26,10 +27,14 @@ const resolvePetImage = (assetFile: string): string => {
   return moduleKey ? PET_IMAGE_MODULES[moduleKey] : '';
 };
 
+const getPetNormalImage = (definition: RawPetDefinition): string => {
+  return definition.imageUrl  || resolvePetImage(definition.assetFile);
+};
+
 const normalizePetTypes = (definitions: RawPetDefinition[]): PetType[] => {
   return definitions
     .map(definition => {
-      const normalImage = resolvePetImage(definition.assetFile);
+      const normalImage = getPetNormalImage(definition);
       if (!normalImage) {
         return null;
       }
