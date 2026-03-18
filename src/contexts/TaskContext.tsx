@@ -85,6 +85,20 @@ const normalizeTasks = (tasks: Task[]): Task[] => {
   }));
 };
 
+const applyDailyCompletionStatus = (tasks: Task[], today: Date): Task[] => {
+  return tasks.map(task => {
+    const lastCompletedDate = task.lastCompleted ? toDate(task.lastCompleted) : null;
+    const completedToday = !isDifferentDay(lastCompletedDate, today);
+
+    return {
+      ...task,
+      isCompleted: completedToday,
+      completedToday,
+      lastCompleted: lastCompletedDate || undefined,
+    };
+  });
+};
+
 const normalizeCompletions = (completions: TaskCompletion[]): TaskCompletion[] => {
   return completions
     .map(completion => {
@@ -216,25 +230,29 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const savedTasks = loadFromStorage<Task[]>('tasks');
     const savedCompletedTasks = loadFromStorage<TaskCompletion[]>('completedTasks');
     const savedTotalCoins = loadFromStorage<number>('totalCoins');
+    const lastReset = toDate(loadFromStorage<unknown>('lastTaskReset'));
+    const today = new Date();
+    const isNewDay = isDifferentDay(lastReset, today);
 
     if (savedTasks && savedCompletedTasks !== null && savedTotalCoins !== null) {
       const normalizedTasks = normalizeTasks(savedTasks);
       const normalizedCompletedTasks = normalizeCompletions(savedCompletedTasks || []);
+      const dailyTasks = applyDailyCompletionStatus(normalizedTasks, today);
 
       dispatch({
         type: 'LOAD_TASKS',
         payload: {
-          tasks: normalizedTasks,
+          tasks: dailyTasks,
           completedTasks: normalizedCompletedTasks,
           totalCoins: savedTotalCoins || 0,
         },
       });
-    } else {
-      // 检查是否需要重置每日任务
-      const lastReset = toDate(loadFromStorage<unknown>('lastTaskReset'));
-      const today = new Date();
-      const isNewDay = isDifferentDay(lastReset, today);
 
+      saveToStorage('tasks', dailyTasks);
+      if (isNewDay) {
+        saveToStorage('lastTaskReset', today);
+      }
+    } else {
       if (isNewDay) {
         dispatch({ type: 'RESET_DAILY_TASKS' });
         saveToStorage('lastTaskReset', today);

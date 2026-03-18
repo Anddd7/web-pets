@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useShop } from '../contexts/ShopContext';
 import { usePet } from '../contexts/PetContext';
+import { useTasks } from '../contexts/TaskContext';
 import { useVoice } from '../hooks/useVoice';
 import ShopList from '../components/shop/ShopList';
 import { ShopItemType } from '../types/shop';
@@ -9,6 +10,7 @@ import { ShopItemType } from '../types/shop';
 const ShopPage: React.FC = () => {
   const { state: shopState, buyItem, useItem, getItemById } = useShop();
   const { state: petState, feedPet, dressPet } = usePet();
+  const { state: taskState } = useTasks();
   const { speakText } = useVoice();
   const [selectedCategory, setSelectedCategory] = useState<ShopItemType>(
     shopState.categories[0]?.id ?? 'food'
@@ -88,7 +90,7 @@ const ShopPage: React.FC = () => {
 
           <div className="flex items-center rounded-full bg-yellow-100 px-3 py-1 md:px-4 md:py-1.5">
             <span className="mr-2 text-yellow-500">💰</span>
-            <span className="font-bold md:text-lg">{shopState.inventory.coins}</span>
+            <span className="font-bold md:text-lg">{taskState.totalCoins}</span>
           </div>
         </div>
 
@@ -101,7 +103,7 @@ const ShopPage: React.FC = () => {
             onUseItem={handleUseItem}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
-            coins={shopState.inventory.coins}
+            coins={taskState.totalCoins}
             showOwnedOnly={showOwnedOnly}
             onToggleShowOwned={toggleShowOwned}
           />

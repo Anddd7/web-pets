@@ -78,7 +78,7 @@ const shopReducer = (state: ShopState, action: ShopAction): ShopState => {
       const { itemId } = action.payload;
       const itemToBuy = state.items.find(item => item.id === itemId);
       
-      if (!itemToBuy || state.inventory.coins < itemToBuy.price || itemToBuy.isOwned) {
+      if (!itemToBuy || itemToBuy.isOwned) {
         return state;
       }
 
@@ -88,7 +88,6 @@ const shopReducer = (state: ShopState, action: ShopAction): ShopState => {
 
       const updatedInventory = {
         ...state.inventory,
-        coins: state.inventory.coins - itemToBuy.price,
         items: {
           ...state.inventory.items,
           [getInventoryCategoryKey(itemToBuy.type)]: [
@@ -171,7 +170,7 @@ const shopReducer = (state: ShopState, action: ShopAction): ShopState => {
 
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(shopReducer, initialState);
-  const { state: taskState } = useTasks();
+  const { state: taskState, spendCoins } = useTasks();
 
   const normalizeSavedItems = (savedItems: ShopItem[]): ShopItem[] => {
     const savedItemsMap = new Map(savedItems.map(item => [item.id, item]));
@@ -250,7 +249,12 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const buyItem = (itemId: string): boolean => {
     const itemToBuy = state.items.find(item => item.id === itemId);
     
-    if (!itemToBuy || state.inventory.coins < itemToBuy.price || itemToBuy.isOwned) {
+    if (!itemToBuy || itemToBuy.isOwned) {
+      return false;
+    }
+
+    const paid = spendCoins(itemToBuy.price);
+    if (!paid) {
       return false;
     }
 

@@ -8,15 +8,15 @@
     "orientation": "right",
     "layout": {
       "placement": "right",
-      "outfitAnchors": {
-        "hat": { "x": 0, "y": -88 },
-        "glasses": { "x": 0, "y": -30 },
-        "clothes": { "x": 0, "y": 18 },
-        "shoes": { "x": 0, "y": 92 }
+ "outfitAnchors": {
+        "hat": { "x": 75, "y": -140 },
+        "glasses": { "x": 75, "y": -80 },
+        "clothes": { "x": -40, "y": 20 },
+        "shoes": { "x": -40, "y": 110 }
       },
       "sideOffsets": {
-        "hat": { "x": 12, "y": 0 },
-        "glasses": { "x": 10, "y": 2 }
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
       }
     }
   },
@@ -53,8 +53,8 @@
       "outfitAnchors": {
         "hat": { "x": 0, "y": -92 },
         "glasses": { "x": 0, "y": -30 },
-        "clothes": { "x": 0, "y": 16 },
-        "shoes": { "x": 0, "y": 94 }
+        "clothes": { "x": 0, "y": 65 },
+        "shoes": { "x": 0, "y": 105 }
       },
       "sideOffsets": {
         "hat": { "x": 0, "y": 0 },
@@ -72,10 +72,10 @@
     "layout": {
       "placement": "center",
       "outfitAnchors": {
-        "hat": { "x": 0, "y": -86 },
-        "glasses": { "x": 0, "y": -28 },
-        "clothes": { "x": 0, "y": 20 },
-        "shoes": { "x": 0, "y": 96 }
+        "hat": { "x": 0, "y": -122 },
+        "glasses": { "x": 0, "y": -70 },
+        "clothes": { "x": 0, "y": 65 },
+        "shoes": { "x": 0, "y": 105 }
       },
       "sideOffsets": {
         "hat": { "x": 0, "y": 0 },
