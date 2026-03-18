@@ -6,9 +6,11 @@ import { useShop } from '../contexts/ShopContext';
 import { useVoice } from '../hooks/useVoice';
 import PetDisplay from '../components/pet/PetDisplay';
 import { getGreeting } from '../utils/time';
+import { OutfitType } from '../types/pet';
+import { ShopItem } from '../types/shop';
 
 const Home: React.FC = () => {
-  const { state: petState, interactWithPet, feedPet, dressPet } = usePet();
+  const { state: petState, interactWithPet, feedPet, dressPet, undressPet } = usePet();
   const { state: taskState } = useTasks();
   const { state: shopState, useItem, getItemById } = useShop();
   const { 
@@ -115,8 +117,16 @@ const Home: React.FC = () => {
       feedPet(itemId, item.effect || {});
       message = `你给 ${petState.selectedPet.name} 喂了 ${item.name}！`;
     } else {
-      dressPet(item.type as 'clothes' | 'hat' | 'shoes' | 'glasses', itemId);
-      message = `你给 ${petState.selectedPet.name} 穿戴了 ${item.name}！`;
+      const outfitType = item.type as 'clothes' | 'hat' | 'shoes' | 'glasses';
+      const isAlreadyEquipped = petState.selectedPet.currentOutfit[outfitType] === itemId;
+
+      if (isAlreadyEquipped) {
+        undressPet(outfitType);
+        message = `你帮 ${petState.selectedPet.name} 脱下了 ${item.name}。`;
+      } else {
+        dressPet(outfitType, itemId);
+        message = `你给 ${petState.selectedPet.name} 穿戴了 ${item.name}！`;
+      }
     }
 
     speakText(message);
@@ -166,6 +176,12 @@ const Home: React.FC = () => {
   const { selectedPet } = petState;
   const isSleeping = selectedPet.isSleeping;
   const petStatusMessage = getPetStatusMessage();
+  const equippedOutfits: Partial<Record<OutfitType, ShopItem>> = {
+    clothes: selectedPet.currentOutfit.clothes ? getItemById(selectedPet.currentOutfit.clothes) : undefined,
+    hat: selectedPet.currentOutfit.hat ? getItemById(selectedPet.currentOutfit.hat) : undefined,
+    shoes: selectedPet.currentOutfit.shoes ? getItemById(selectedPet.currentOutfit.shoes) : undefined,
+    glasses: selectedPet.currentOutfit.glasses ? getItemById(selectedPet.currentOutfit.glasses) : undefined,
+  };
   const ownedItems = shopState.items
     .filter(item => item.isOwned)
     .map(item => getItemById(item.id))
@@ -178,7 +194,11 @@ const Home: React.FC = () => {
           <motion.button
             key={item.id}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex h-12 w-12 items-center justify-center md:h-14 md:w-14"
+            className={`inline-flex h-12 w-12 items-center justify-center rounded-full border-2 md:h-14 md:w-14 ${
+              item.type !== 'food' && selectedPet.currentOutfit[item.type as OutfitType] === item.id
+                ? 'border-primary bg-primary/10'
+                : 'border-transparent'
+            }`}
             onClick={() => handleUseOwnedItem(item.id)}
             title={item.name}
             aria-label={item.name}
@@ -237,6 +257,7 @@ const Home: React.FC = () => {
             pet={selectedPet}
             onInteract={handlePetInteract}
             isSleeping={isSleeping}
+            equippedOutfits={equippedOutfits}
             extraRow={quickUseItemRow}
           />
 

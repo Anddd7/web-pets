@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import PetSelection from './pages/PetSelection';
 import TasksPage from './pages/TasksPage';
 import ShopPage from './pages/ShopPage';
+import SettingsPage from './pages/SettingsPage';
 import { PetProvider } from './contexts/PetContext';
 import { TaskProvider } from './contexts/TaskContext';
 import { ShopProvider } from './contexts/ShopContext';
@@ -28,6 +29,8 @@ const AppContent: React.FC = () => {
       return <TasksPage />;
     case '/shop':
       return <ShopPage />;
+    case '/settings':
+      return <SettingsPage />;
     default:
       return <Home />;
   }

@@ -31,8 +31,8 @@
     "reward": 5,
     "icon": "coffee",
     "timeRange": {
-      "start": "08:00",
-      "end": "12:00"
+      "start": "07:00",
+      "end": "10:00"
     }
   },
   {
@@ -48,18 +48,6 @@
     }
   },
   {
-    "id": "afternoon-homework",
-    "name": "做作业",
-    "description": "认真完成作业",
-    "category": "afternoon",
-    "reward": 15,
-    "icon": "book",
-    "timeRange": {
-      "start": "15:00",
-      "end": "18:00"
-    }
-  },
-  {
     "id": "evening-dinner",
     "name": "吃晚餐",
     "description": "和家人一起吃晚餐",
@@ -69,6 +57,18 @@
     "timeRange": {
       "start": "17:00",
       "end": "19:00"
+    }
+  },
+  {
+    "id": "evening-brush-teeth",
+    "name": "睡前刷牙",
+    "description": "睡前刷牙保护牙齿",
+    "category": "evening",
+    "reward": 5,
+    "icon": "tooth",
+    "timeRange": {
+      "start": "19:00",
+      "end": "22:00"
     }
   },
   {

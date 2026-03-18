@@ -1,40 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Pet } from '../../types/pet';
+import { OutfitType, Pet } from '../../types/pet';
+import { ShopItem } from '../../types/shop';
 
 interface PetDisplayProps {
   pet: Pet;
   onInteract: (type: 'play' | 'pet' | 'clean') => void;
   isSleeping: boolean;
+  equippedOutfits: Partial<Record<OutfitType, ShopItem | undefined>>;
   extraRow?: React.ReactNode;
 }
 
-const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, extraRow }) => {
-  const [animationIndex, setAnimationIndex] = useState(0);
-  const [currentAnimation, setCurrentAnimation] = useState<'idle' | 'happy' | 'eating' | 'sleeping'>('idle');
+const OUTFIT_ICON_SIZES: Record<OutfitType, { width: number; height: number }> = {
+  hat: { width: 88, height: 88 },
+  glasses: { width: 74, height: 74 },
+  clothes: { width: 112, height: 112 },
+  shoes: { width: 98, height: 98 },
+};
 
-  // 根据宠物状态选择动画
+const PetDisplay: React.FC<PetDisplayProps> = ({
+  pet,
+  onInteract,
+  isSleeping,
+  equippedOutfits,
+  extraRow,
+}) => {
+  const [displayStatus, setDisplayStatus] = useState<'normal' | 'sleeping'>('normal');
+
   useEffect(() => {
-    if (isSleeping) {
-      setCurrentAnimation('sleeping');
-    } else if (pet.happiness > 80) {
-      setCurrentAnimation('happy');
-    } else {
-      setCurrentAnimation('idle');
-    }
-  }, [pet.happiness, isSleeping]);
-
-  // 动画帧切换
-  useEffect(() => {
-    const animationFrames = pet.animations[currentAnimation];
-    if (!animationFrames || animationFrames.length === 0) return;
-
-    const interval = setInterval(() => {
-      setAnimationIndex((prev) => (prev + 1) % animationFrames.length);
-    }, 500); // 每500毫秒切换一帧
-
-    return () => clearInterval(interval);
-  }, [currentAnimation, pet.animations]);
+    setDisplayStatus(isSleeping ? 'sleeping' : 'normal');
+  }, [isSleeping]);
 
   // 处理点击事件
   const handlePetClick = () => {
@@ -45,22 +40,56 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
     const randomInteraction = interactions[Math.floor(Math.random() * interactions.length)];
     onInteract(randomInteraction);
     
-    // 临时切换到开心动画
-    setCurrentAnimation('happy');
-    setTimeout(() => {
-      if (!isSleeping) {
-        setCurrentAnimation('idle');
-      }
-    }, 2000);
+    setDisplayStatus('normal');
   };
 
-  const getCurrentImage = () => {
-    const animationFrames = pet.animations[currentAnimation];
-    if (!animationFrames || animationFrames.length === 0) {
-      return isSleeping ? pet.sleepImageUrl : pet.imageUrl;
-    }
-    return animationFrames[animationIndex];
+  const getPlacementClass = () => {
+    if (pet.layout.placement === 'left') return 'self-start';
+    if (pet.layout.placement === 'right') return 'self-end';
+    return 'self-center';
   };
+
+  const getOutfitPosition = (type: OutfitType) => {
+    const anchor = pet.layout.outfitAnchors[type];
+    if (type === 'hat' || type === 'glasses') {
+      if (pet.orientation !== 'center') {
+        const offset = pet.layout.sideOffsets[type];
+        return {
+          x: anchor.x + offset.x,
+          y: anchor.y + offset.y,
+        };
+      }
+    }
+
+    return { x: anchor.x, y: anchor.y };
+  };
+
+  const renderOutfitOverlay = (type: OutfitType) => {
+    const outfit = equippedOutfits[type];
+    if (!outfit || displayStatus === 'sleeping') {
+      return null;
+    }
+
+    const position = getOutfitPosition(type);
+    const size = OUTFIT_ICON_SIZES[type];
+
+    return (
+      <img
+        key={type}
+        src={outfit.imageUrl}
+        alt={outfit.name}
+        className="pointer-events-none absolute object-contain"
+        style={{
+          width: `${size.width}px`,
+          height: `${size.height}px`,
+          left: `calc(50% + ${position.x}px)`,
+          top: `calc(50% + ${position.y}px)`,
+          transform: 'translate(-50%, -50%)',
+        }}
+      />
+    );
+  };
+
 
   return (
     <div className="relative flex w-full flex-col items-center justify-center">
@@ -99,10 +128,10 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
       
       {/* 宠物图像 */}
       <motion.div
-        className="cursor-pointer"
+        className={`relative cursor-pointer`}
         whileTap={{ scale: 0.95 }}
         onClick={handlePetClick}
-        animate={isSleeping ? "sleeping" : "idle"}
+        animate={displayStatus === 'sleeping' ? "sleeping" : "idle"}
         variants={{
           idle: {
             y: [0, -5, 0],
@@ -122,16 +151,33 @@ const PetDisplay: React.FC<PetDisplayProps> = ({ pet, onInteract, isSleeping, ex
           },
         }}
       >
-        <div className="flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-white/70 shadow-md md:h-80 md:w-80">
-          <img 
-            src={getCurrentImage()} 
-            alt={pet.name} 
-            className="h-56 w-56 object-contain md:h-72 md:w-72"
-          />
+        <div className="relative flex h-64 w-64 items-center justify-center overflow-hidden border-4 border-white bg-white/70 shadow-md md:h-80 md:w-80">
+          {displayStatus === 'sleeping' ? (
+            <div className="relative flex h-56 w-56 items-center justify-center rounded-full bg-blue-950/65 md:h-72 md:w-72">
+              <span className="text-7xl leading-none md:text-8xl" role="img" aria-label="sleeping">
+                {pet.avatar.sleepingIcon}
+              </span>
+            </div>
+          ) : (
+            <img
+              src={pet.avatar.normal}
+              alt={pet.name}
+              className="h-56 w-56 object-contain md:h-72 md:w-72"
+            />
+          )}
+
+          {renderOutfitOverlay('hat')}
+          {renderOutfitOverlay('glasses')}
+          {renderOutfitOverlay('clothes')}
+          {renderOutfitOverlay('shoes')}
+
+          {displayStatus === 'sleeping' && (
+            <div className="absolute inset-0 bg-blue-950/30"></div>
+          )}
         </div>
         
         {/* 睡眠状态指示器 */}
-        {isSleeping && (
+        {displayStatus === 'sleeping' && (
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-900 bg-opacity-50 rounded-full p-4">
             <span className="text-white text-2xl">💤</span>
           </div>

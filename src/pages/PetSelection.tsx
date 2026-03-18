@@ -54,7 +54,7 @@ const PetSelection: React.FC = () => {
               <div className="flex flex-col items-center">
                 <div className="mb-3 h-32 w-32 md:h-40 md:w-40">
                   <img 
-                    src={pet.imageUrl} 
+                    src={pet.avatar.normal}
                     alt={pet.name} 
                     className="w-full h-full object-contain"
                   />
@@ -76,7 +76,7 @@ const PetSelection: React.FC = () => {
             <div className="mb-6 flex flex-col items-center md:mb-7">
               <div className="mb-4 h-48 w-48 md:h-56 md:w-56">
                 <img 
-                  src={selectedPet ? selectedPet.imageUrl : ''} 
+                  src={selectedPet ? selectedPet.avatar.normal : ''}
                   alt={selectedPet?.name || ''} 
                   className="w-full h-full object-contain"
                 />

@@ -4,7 +4,53 @@ import { saveToStorage, loadFromStorage } from '../utils/storage';
 import { checkPetSleepStatus } from '../utils/time';
 import petDefinitions from '../config/pets.json';
 
-const PET_TYPES: PetType[] = petDefinitions as PetType[];
+type RawPetDefinition = {
+  id: string;
+  name: string;
+  description: string;
+  assetFile: string;
+  statusOptions: Array<'normal' | 'sleeping'>;
+  orientation: 'left' | 'right' | 'center';
+  layout: PetType['layout'];
+};
+
+const PET_IMAGE_MODULES = import.meta.glob('../assets/pets/*', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const BED_ICON = '🛏️';
+
+const resolvePetImage = (assetFile: string): string => {
+  const moduleKey = Object.keys(PET_IMAGE_MODULES).find(path => path.endsWith(`/${assetFile}`));
+  return moduleKey ? PET_IMAGE_MODULES[moduleKey] : '';
+};
+
+const normalizePetTypes = (definitions: RawPetDefinition[]): PetType[] => {
+  return definitions
+    .map(definition => {
+      const normalImage = resolvePetImage(definition.assetFile);
+      if (!normalImage) {
+        return null;
+      }
+
+      return {
+        id: definition.id,
+        name: definition.name,
+        description: definition.description,
+        statusOptions: definition.statusOptions,
+        orientation: definition.orientation,
+        layout: definition.layout,
+        avatar: {
+          normal: normalImage,
+          sleepingIcon: BED_ICON,
+        },
+      } satisfies PetType;
+    })
+    .filter((pet): pet is PetType => pet !== null);
+};
+
+const PET_TYPES: PetType[] = normalizePetTypes(petDefinitions as RawPetDefinition[]);
 
 interface PetState {
   selectedPet: Pet | null;
@@ -29,6 +75,79 @@ const initialState: PetState = {
   isLoading: true,
 };
 
+const buildPetFromType = (petType: PetType, name: string): Pet => {
+  const isSleeping = checkPetSleepStatus();
+
+  return {
+    id: petType.id,
+    name: name || petType.name,
+    type: petType.id,
+    age: 0,
+    hunger: 80,
+    happiness: 90,
+    energy: 100,
+    isSleeping,
+    status: isSleeping ? 'sleeping' : 'normal',
+    currentOutfit: {},
+    ownedOutfits: {
+      clothes: [],
+      hats: [],
+      shoes: [],
+      glasses: [],
+    },
+    lastInteraction: new Date(),
+    avatar: petType.avatar,
+    orientation: petType.orientation,
+    layout: petType.layout,
+  };
+};
+
+const normalizeSavedPet = (savedPet: Pet): Pet => {
+  const matchedType = PET_TYPES.find(pet => pet.id === savedPet.id || pet.id === savedPet.type);
+
+  if (!matchedType) {
+    const isSleeping = checkPetSleepStatus();
+    const fallbackAvatar = savedPet.avatar || {
+      normal: (savedPet as Pet & { imageUrl?: string }).imageUrl || '',
+      sleepingIcon: BED_ICON,
+    };
+
+    return {
+      ...savedPet,
+      lastInteraction: new Date(savedPet.lastInteraction),
+      isSleeping,
+      status: isSleeping ? 'sleeping' : 'normal',
+      avatar: fallbackAvatar,
+      orientation: savedPet.orientation || 'center',
+      layout: savedPet.layout || {
+        placement: 'center',
+        outfitAnchors: {
+          hat: { x: 0, y: -88 },
+          glasses: { x: 0, y: -30 },
+          clothes: { x: 0, y: 20 },
+          shoes: { x: 0, y: 96 },
+        },
+        sideOffsets: {
+          hat: { x: 0, y: 0 },
+          glasses: { x: 0, y: 0 },
+        },
+      },
+    };
+  }
+
+  return {
+    ...savedPet,
+    id: matchedType.id,
+    type: matchedType.id,
+    lastInteraction: new Date(savedPet.lastInteraction),
+    isSleeping: checkPetSleepStatus(),
+    status: checkPetSleepStatus() ? 'sleeping' : 'normal',
+    avatar: matchedType.avatar,
+    orientation: matchedType.orientation,
+    layout: matchedType.layout,
+  };
+};
+
 const PetContext = createContext<{
   state: PetState;
   dispatch: React.Dispatch<PetAction>;
@@ -44,27 +163,7 @@ const petReducer = (state: PetState, action: PetAction): PetState => {
   switch (action.type) {
     case 'SELECT_PET':
       const { petType, name } = action.payload;
-      const newPet: Pet = {
-        id: petType.id,
-        name: name || petType.name,
-        type: petType.id,
-        age: 0,
-        hunger: 80,
-        happiness: 90,
-        energy: 100,
-        isSleeping: checkPetSleepStatus(),
-        currentOutfit: {},
-        ownedOutfits: {
-          clothes: [],
-          hats: [],
-          shoes: [],
-          glasses: [],
-        },
-        lastInteraction: new Date(),
-        imageUrl: petType.imageUrl,
-        sleepImageUrl: petType.sleepImageUrl,
-        animations: petType.animations,
-      };
+      const newPet: Pet = buildPetFromType(petType, name);
       saveToStorage('selectedPet', newPet);
       return {
         ...state,
@@ -161,9 +260,10 @@ const petReducer = (state: PetState, action: PetAction): PetState => {
 
     case 'UPDATE_SLEEP_STATUS':
       if (!state.selectedPet) return state;
-      const sleepUpdatedPet = {
+      const sleepUpdatedPet: Pet = {
         ...state.selectedPet,
         isSleeping: action.payload.isSleeping,
+        status: action.payload.isSleeping ? 'sleeping' : 'normal',
       };
       saveToStorage('selectedPet', sleepUpdatedPet);
       return {
@@ -198,11 +298,10 @@ export const PetProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   useEffect(() => {
     const savedPet = loadFromStorage<Pet>('selectedPet');
     if (savedPet) {
-      // 更新睡眠状态
-      const isSleeping = checkPetSleepStatus();
+      const normalizedPet = normalizeSavedPet(savedPet);
       dispatch({ 
         type: 'LOAD_PET', 
-        payload: { ...savedPet, isSleeping } 
+        payload: normalizedPet,
       });
     } else {
       dispatch({ type: 'RESET_PET' });

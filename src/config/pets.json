@@ -2,106 +2,169 @@
   {
     "id": "cat",
     "name": "小猫",
-    "description": "一只可爱的小猫，喜欢玩耍和睡觉",
-    "imageUrl": "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/95ea8e0f669f4dceb73bd576361783e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=2NU%2B3CZbk4c%2FLeHKNaZJHwtptys%3D",
-    "sleepImageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/de5076333e9149e6b1f5b7785ad8d53b~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=vixP5b3m1NRSaE5BhvX%2BAWPOV%2FQ%3D",
-    "animations": {
-      "idle": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/95ea8e0f669f4dceb73bd576361783e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=2NU%2B3CZbk4c%2FLeHKNaZJHwtptys%3D"
-      ],
-      "happy": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/95ea8e0f669f4dceb73bd576361783e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=2NU%2B3CZbk4c%2FLeHKNaZJHwtptys%3D"
-      ],
-      "eating": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/95ea8e0f669f4dceb73bd576361783e3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=2NU%2B3CZbk4c%2FLeHKNaZJHwtptys%3D"
-      ],
-      "sleeping": [
-        "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/de5076333e9149e6b1f5b7785ad8d53b~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=vixP5b3m1NRSaE5BhvX%2BAWPOV%2FQ%3D"
-      ]
+    "description": "好奇又亲人的小猫，喜欢晒太阳。",
+    "assetFile": "cat-right.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "right",
+    "layout": {
+      "placement": "right",
+      "outfitAnchors": {
+        "hat": { "x": 0, "y": -88 },
+        "glasses": { "x": 0, "y": -30 },
+        "clothes": { "x": 0, "y": 18 },
+        "shoes": { "x": 0, "y": 92 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 12, "y": 0 },
+        "glasses": { "x": 10, "y": 2 }
+      }
     }
   },
   {
     "id": "dog",
     "name": "小狗",
-    "description": "一只活泼的小狗，总是很开心",
-    "imageUrl": "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/86ff71542a0b48a5bbb32b969db3f770~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=pLs1h6d9fBpNxIuIBtbNUEcI8Fc%3D",
-    "sleepImageUrl": "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/e25e01f05272489c97a5ae3e0206e4b9~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392674&x-signature=ItQI%2BQ%2FSRLmCg5ui700bT5nrWUQ%3D",
-    "animations": {
-      "idle": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/86ff71542a0b48a5bbb32b969db3f770~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=pLs1h6d9fBpNxIuIBtbNUEcI8Fc%3D"
-      ],
-      "happy": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/86ff71542a0b48a5bbb32b969db3f770~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=pLs1h6d9fBpNxIuIBtbNUEcI8Fc%3D"
-      ],
-      "eating": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/86ff71542a0b48a5bbb32b969db3f770~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=pLs1h6d9fBpNxIuIBtbNUEcI8Fc%3D"
-      ],
-      "sleeping": [
-        "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/e25e01f05272489c97a5ae3e0206e4b9~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392674&x-signature=ItQI%2BQ%2FSRLmCg5ui700bT5nrWUQ%3D"
-      ]
+    "description": "活力满满的小狗，总想和你一起玩。",
+    "assetFile": "dog-left.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "left",
+    "layout": {
+     "placement": "left",
+      "outfitAnchors": {
+        "hat": { "x": -75, "y": -140 },
+        "glasses": { "x": -75, "y": -80 },
+        "clothes": { "x": 40, "y": 20 },
+        "shoes": { "x": 40, "y": 110 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
     }
   },
   {
     "id": "rabbit",
-    "name": "兔子",
-    "description": "一只温柔的兔子，喜欢胡萝卜",
-    "imageUrl": "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/1c9a0f28c51b45b49263989fb6273320~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=J7Fb%2BIKdR1rn0bUnJR79nKEWKyw%3D",
-    "sleepImageUrl": "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/2aef7c6a648943b0be9dd0596f607562~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392678&x-signature=Xds7GX%2BHPmJq6LXv6iIMy9nWg%2BM%3D",
-    "animations": {
-      "idle": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/1c9a0f28c51b45b49263989fb6273320~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=J7Fb%2BIKdR1rn0bUnJR79nKEWKyw%3D"
-      ],
-      "happy": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/1c9a0f28c51b45b49263989fb6273320~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=J7Fb%2BIKdR1rn0bUnJR79nKEWKyw%3D"
-      ],
-      "eating": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/1c9a0f28c51b45b49263989fb6273320~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=J7Fb%2BIKdR1rn0bUnJR79nKEWKyw%3D"
-      ],
-      "sleeping": [
-        "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/2aef7c6a648943b0be9dd0596f607562~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392678&x-signature=Xds7GX%2BHPmJq6LXv6iIMy9nWg%2BM%3D"
-      ]
+    "name": "兔兔",
+    "description": "软萌安静的兔兔，最爱胡萝卜。",
+    "assetFile": "rabbit.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "center",
+    "layout": {
+      "placement": "center",
+      "outfitAnchors": {
+        "hat": { "x": 0, "y": -92 },
+        "glasses": { "x": 0, "y": -30 },
+        "clothes": { "x": 0, "y": 16 },
+        "shoes": { "x": 0, "y": 94 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
     }
   },
   {
     "id": "bear",
     "name": "小熊",
-    "description": "一只可爱的小熊，喜欢蜂蜜",
-    "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/527f0ed1bbad4c2b85f9d0336b5e7f96~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=l7fFWfz1KB3eU23r8BE%2BfxN6NyM%3D",
-    "sleepImageUrl": "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/fa1e3fdf89054811bf0bb13568a3c6a3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=ZKf686aa5s6%2FJuh5YoR2b75rUYY%3D",
-    "animations": {
-      "idle": [
-        "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/527f0ed1bbad4c2b85f9d0336b5e7f96~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=l7fFWfz1KB3eU23r8BE%2BfxN6NyM%3D"
-      ],
-      "happy": [
-        "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/527f0ed1bbad4c2b85f9d0336b5e7f96~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=l7fFWfz1KB3eU23r8BE%2BfxN6NyM%3D"
-      ],
-      "eating": [
-        "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/527f0ed1bbad4c2b85f9d0336b5e7f96~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=l7fFWfz1KB3eU23r8BE%2BfxN6NyM%3D"
-      ],
-      "sleeping": [
-        "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/fa1e3fdf89054811bf0bb13568a3c6a3~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=ZKf686aa5s6%2FJuh5YoR2b75rUYY%3D"
-      ]
+    "description": "圆滚滚的小熊，憨厚又可靠。",
+    "assetFile": "bear.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "center",
+    "layout": {
+      "placement": "center",
+      "outfitAnchors": {
+        "hat": { "x": 0, "y": -86 },
+        "glasses": { "x": 0, "y": -28 },
+        "clothes": { "x": 0, "y": 20 },
+        "shoes": { "x": 0, "y": 96 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
     }
   },
   {
-    "id": "panda",
-    "name": "熊猫",
-    "description": "一只懒懒的熊猫，喜欢竹子",
-    "imageUrl": "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9d6aa27380d64609953487986b26bc10~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=LEH690On8Apo86OWR5y99vL%2F5PA%3D",
-    "sleepImageUrl": "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/74c4b49ec01b499c8146fc1abc024b02~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=e3ySJTBQfyPwqBemGteY%2BZNGu08%3D",
-    "animations": {
-      "idle": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9d6aa27380d64609953487986b26bc10~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=LEH690On8Apo86OWR5y99vL%2F5PA%3D"
-      ],
-      "happy": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9d6aa27380d64609953487986b26bc10~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=LEH690On8Apo86OWR5y99vL%2F5PA%3D"
-      ],
-      "eating": [
-        "https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9d6aa27380d64609953487986b26bc10~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392655&x-signature=LEH690On8Apo86OWR5y99vL%2F5PA%3D"
-      ],
-      "sleeping": [
-        "https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/74c4b49ec01b499c8146fc1abc024b02~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392675&x-signature=e3ySJTBQfyPwqBemGteY%2BZNGu08%3D"
-      ]
+    "id": "deer",
+    "name": "小鹿",
+    "description": "灵动温柔的小鹿，跑起来像风一样。",
+    "assetFile": "deer-left.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "left",
+    "layout": {
+      "placement": "left",
+      "outfitAnchors": {
+        "hat": { "x": -75, "y": -140 },
+        "glasses": { "x": -75, "y": -80 },
+        "clothes": { "x": 40, "y": 20 },
+        "shoes": { "x": 40, "y": 110 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
+    }
+  },
+  {
+    "id": "fox",
+    "name": "小狐狸",
+    "description": "机灵的小狐狸，眼神里全是故事。",
+    "assetFile": "fox-left.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "left",
+    "layout": {
+      "placement": "left",
+      "outfitAnchors": {
+        "hat": { "x": -75, "y": -140 },
+        "glasses": { "x": -75, "y": -80 },
+        "clothes": { "x": 40, "y": 20 },
+        "shoes": { "x": 40, "y": 110 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
+    }
+  },
+  {
+    "id": "hamster",
+    "name": "仓鼠",
+    "description": "小小的仓鼠，储粮和打滚样样精通。",
+    "assetFile": "hamster.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "center",
+    "layout": {
+      "placement": "center",
+      "outfitAnchors": {
+        "hat": { "x": 0, "y": -80 },
+        "glasses": { "x": 0, "y": -24 },
+        "clothes": { "x": 0, "y": 22 },
+        "shoes": { "x": 0, "y": 90 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
+    }
+  },
+  {
+    "id": "penguin",
+    "name": "企鹅",
+    "description": "摇摇摆摆的企鹅，爱冰也爱拥抱。",
+    "assetFile": "penguin.png",
+    "statusOptions": ["normal", "sleeping"],
+    "orientation": "center",
+    "layout": {
+      "placement": "center",
+      "outfitAnchors": {
+        "hat": { "x": 0, "y": -88 },
+        "glasses": { "x": 0, "y": -30 },
+        "clothes": { "x": 0, "y": 20 },
+        "shoes": { "x": 0, "y": 96 }
+      },
+      "sideOffsets": {
+        "hat": { "x": 0, "y": 0 },
+        "glasses": { "x": 0, "y": 0 }
+      }
     }
   }
 ]
