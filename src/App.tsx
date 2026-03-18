@@ -7,11 +7,7 @@ import SettingsPage from './pages/SettingsPage';
 import { PetProvider } from './contexts/PetContext';
 import { TaskProvider } from './contexts/TaskContext';
 import { ShopProvider } from './contexts/ShopContext';
-
-const normalizePath = (path: string): string => {
-  const normalized = path.replace(/\/+$/, '');
-  return normalized || '/';
-};
+import { normalizePath } from './utils/navigation';
 
 const AppContent: React.FC = () => {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));

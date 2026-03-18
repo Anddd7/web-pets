@@ -4,6 +4,7 @@ import { useTasks } from '../contexts/TaskContext';
 import { useVoice } from '../hooks/useVoice';
 import TaskList from '../components/tasks/TaskList';
 import { Task, TaskCategory } from '../types/task';
+import { navigateTo } from '../utils/navigation';
 
 const TasksPage: React.FC = () => {
   const { state, completeTask } = useTasks();
@@ -77,7 +78,7 @@ const TasksPage: React.FC = () => {
         <motion.button
           whileTap={{ scale: 0.95 }}
           className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
-          onClick={() => window.location.href = '/'}
+          onClick={() => navigateTo('/')}
         >
           <span className="text-lg md:text-xl">←</span>
         </motion.button>

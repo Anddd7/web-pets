@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { clearStorage, loadFromStorage, removeFromStorage, saveToStorage } from '../utils/storage';
 import { Task, TaskCompletion } from '../types/task';
+import { navigateTo } from '../utils/navigation';
 
 const SettingsPage: React.FC = () => {
   const [refreshCount, setRefreshCount] = useState(0);
@@ -33,7 +34,7 @@ const SettingsPage: React.FC = () => {
 
   const handleReselectPet = () => {
     removeFromStorage('selectedPet');
-    window.location.href = '/select';
+    navigateTo('/select');
   };
 
   const isSameDay = (date: Date, compareTo: Date): boolean => {
@@ -107,7 +108,7 @@ const SettingsPage: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
-            onClick={() => window.location.href = '/'}
+            onClick={() => navigateTo('/')}
           >
             <span className="text-lg md:text-xl">←</span>
           </motion.button>

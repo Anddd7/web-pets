@@ -6,6 +6,7 @@ import { useTasks } from '../contexts/TaskContext';
 import { useVoice } from '../hooks/useVoice';
 import ShopList from '../components/shop/ShopList';
 import { ShopItemType } from '../types/shop';
+import { navigateTo } from '../utils/navigation';
 
 const ShopPage: React.FC = () => {
   const { state: shopState, buyItem, useItem, getItemById } = useShop();
@@ -81,7 +82,7 @@ const ShopPage: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
-            onClick={() => window.location.href = '/'}
+            onClick={() => navigateTo('/')}
           >
             <span className="text-lg md:text-xl">←</span>
           </motion.button>

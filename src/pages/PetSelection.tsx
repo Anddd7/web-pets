@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { usePet } from '../contexts/PetContext';
 import { PetType } from '../types/pet';
+import { navigateTo } from '../utils/navigation';
 
 const PetSelection: React.FC = () => {
   const { state, selectPet } = usePet();
@@ -20,7 +21,7 @@ const PetSelection: React.FC = () => {
   const handleAdopt = () => {
     if (selectedPet && petName.trim()) {
       selectPet(selectedPet, petName.trim());
-      window.location.href = '/';
+      navigateTo('/');
     }
   };
 

@@ -6,6 +6,7 @@ import { useShop } from '../contexts/ShopContext';
 import { useVoice } from '../hooks/useVoice';
 import PetDisplay from '../components/pet/PetDisplay';
 import { getGreeting } from '../utils/time';
+import { navigateTo } from '../utils/navigation';
 import { OutfitType } from '../types/pet';
 import { ShopItem } from '../types/shop';
 
@@ -164,7 +165,7 @@ const Home: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             className="bg-primary text-white rounded-full px-6 py-2 font-bold"
-            onClick={() => window.location.href = '/select'}
+            onClick={() => navigateTo('/select')}
           >
             去领养
           </motion.button>
@@ -236,7 +237,7 @@ const Home: React.FC = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
-              onClick={() => window.location.href = '/tasks'}
+              onClick={() => navigateTo('/tasks')}
             >
               <span className="text-lg md:text-xl">📋</span>
             </motion.button>
@@ -244,7 +245,7 @@ const Home: React.FC = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm md:h-12 md:w-12"
-              onClick={() => window.location.href = '/shop'}
+              onClick={() => navigateTo('/shop')}
             >
               <span className="text-lg md:text-xl">🛍️</span>
             </motion.button>
@@ -297,7 +298,7 @@ const Home: React.FC = () => {
           <motion.button
             whileTap={{ scale: 0.95 }}
             className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-sm md:h-16 md:w-16"
-            onClick={() => window.location.href = '/settings'}
+            onClick={() => navigateTo('/settings')}
           >
             <span className="text-2xl md:text-3xl">⚙️</span>
           </motion.button>
