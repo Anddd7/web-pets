@@ -1,0 +1,18 @@
+node_modules
+dist
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Generated from vite.config.ts in this repo
+vite.config.js
+vite.config.d.ts
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Logs and OS files
+*.log
+.DS_Store

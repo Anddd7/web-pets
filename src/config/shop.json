@@ -1,0 +1,151 @@
+{
+  "categories": [
+    { "id": "food", "name": "食物", "icon": "🍎" },
+    { "id": "clothes", "name": "衣服", "icon": "👕" },
+    { "id": "hat", "name": "帽子", "icon": "🧢" },
+    { "id": "shoes", "name": "鞋子", "icon": "👟" },
+    { "id": "glasses", "name": "眼镜", "icon": "👓" }
+  ],
+  "items": [
+    {
+      "id": "food-apple",
+      "name": "苹果",
+      "type": "food",
+      "price": 5,
+      "effect": { "hunger": 10, "happiness": 5 },
+      "imageUrl": "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a029b5b6ccec4beca4485e26a47fcf74~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392699&x-signature=EyVJbx4CoKk9t%2FoJbN68xLihwF8%3D",
+      "isOwned": false,
+      "description": "一个新鲜的苹果，增加10点饱食度"
+    },
+    {
+      "id": "food-fish",
+      "name": "鱼",
+      "type": "food",
+      "price": 10,
+      "effect": { "hunger": 20, "happiness": 10 },
+      "imageUrl": "https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/222c3c748cab49bb834447b4c68a3cb0~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392701&x-signature=KPoITxq5dtd4qo%2FXcXZqKEoO%2BnA%3D",
+      "isOwned": false,
+      "description": "一条美味的鱼，增加20点饱食度"
+    },
+    {
+      "id": "food-cake",
+      "name": "蛋糕",
+      "type": "food",
+      "price": 15,
+      "effect": { "hunger": 15, "happiness": 20 },
+      "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/f834bd4dceba4d78b01885f21e6d6a6d~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392700&x-signature=bIPRB3mFf2OU%2B6MP0Oz4i4Pz1UE%3D",
+      "isOwned": false,
+      "description": "一个美味的蛋糕，增加15点饱食度和20点开心度"
+    },
+    {
+      "id": "food-icecream",
+      "name": "冰淇淋",
+      "type": "food",
+      "price": 10,
+      "effect": { "hunger": 5, "happiness": 25 },
+      "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/503dfa52d03c4c96b6c6db0bccc3b25e~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392700&x-signature=mk4OCzaboK0Q9eROfzKydcwmKyM%3D",
+      "isOwned": false,
+      "description": "一个甜美的冰淇淋，增加5点饱食度和25点开心度"
+    },
+    {
+      "id": "food-honey",
+      "name": "蜂蜜",
+      "type": "food",
+      "price": 20,
+      "effect": { "hunger": 25, "happiness": 15, "energy": 10 },
+      "imageUrl": "https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/8f244d14fc894863b0b62ab6d612c0d6~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392700&x-signature=Ng5fHYy3hnShg%2BkFrTIWhd8L4as%3D",
+      "isOwned": false,
+      "description": "一罐香甜的蜂蜜，增加25点饱食度和15点开心度"
+    },
+    {
+      "id": "clothes-tshirt",
+      "name": "T恤",
+      "type": "clothes",
+      "price": 20,
+      "imageUrl": "https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/e9d412b249654bf4a01a400e9fbbaacb~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392724&x-signature=QT2e%2F8B57yJlsfGhF8t14Czna1U%3D",
+      "isOwned": false,
+      "description": "一件舒适的T恤"
+    },
+    {
+      "id": "clothes-dress",
+      "name": "连衣裙",
+      "type": "clothes",
+      "price": 30,
+      "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/9126a0ecc3af4e16b29c7633623b0276~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392724&x-signature=LFGyDtr2wpG6PQgZ3lARjAn2YtE%3D",
+      "isOwned": false,
+      "description": "一件漂亮的连衣裙"
+    },
+    {
+      "id": "clothes-superhero",
+      "name": "超人装",
+      "type": "clothes",
+      "price": 50,
+      "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9b8.svg",
+      "isOwned": false,
+      "description": "一件超级英雄服装，让你的宠物变成超级英雄"
+    },
+    {
+      "id": "hat-baseball",
+      "name": "棒球帽",
+      "type": "hat",
+      "price": 15,
+      "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/de1e37978cf04b82bef8f7f2897f05c9~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392724&x-signature=qhcFutDVmaAIAZ1SeHVGUDlCQS4%3D",
+      "isOwned": false,
+      "description": "一顶时尚的棒球帽"
+    },
+    {
+      "id": "hat-crown",
+      "name": "皇冠",
+      "type": "hat",
+      "price": 40,
+      "imageUrl": "https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/a753361df5504da2a27abe1c36336031~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392733&x-signature=ix%2FzkneM2db%2Ff2h%2FOwN66RSbum4%3D",
+      "isOwned": false,
+      "description": "一个华丽的皇冠，让你的宠物看起来像国王或王后"
+    },
+    {
+      "id": "hat-party",
+      "name": "派对帽",
+      "type": "hat",
+      "price": 10,
+      "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f973.svg",
+      "isOwned": false,
+      "description": "一个有趣的派对帽，适合庆祝生日"
+    },
+    {
+      "id": "shoes-sneakers",
+      "name": "运动鞋",
+      "type": "shoes",
+      "price": 25,
+      "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f45f.svg",
+      "isOwned": false,
+      "description": "一双舒适的运动鞋"
+    },
+    {
+      "id": "shoes-boots",
+      "name": "靴子",
+      "type": "shoes",
+      "price": 35,
+      "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f462.svg",
+      "isOwned": false,
+      "description": "一双时尚的靴子"
+    },
+    {
+      "id": "glasses-sunglasses",
+      "name": "太阳镜",
+      "type": "glasses",
+      "price": 20,
+      "imageUrl": "https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/7569caf2f39d4d799f05e013f58952a5~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=2026031810183272D137EF0367BDA95880&rrcfp=f06b921b&x-expires=1776392724&x-signature=b1v145Mlb9oO4NNArzyTsvyWUTU%3D",
+      "isOwned": false,
+      "description": "一副酷毙了的太阳镜"
+    },
+    {
+      "id": "glasses-nerd",
+      "name": " nerd眼镜",
+      "type": "glasses",
+      "price": 15,
+      "imageUrl": "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f913.svg",
+      "isOwned": false,
+      "description": "一副书呆子眼镜，让你的宠物看起来很聪明"
+    }
+  ]
+}

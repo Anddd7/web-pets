@@ -1,0 +1,122 @@
+[
+  {
+    "id": "morning-get-up",
+    "name": "按时起床",
+    "description": "早上7点前起床",
+    "category": "morning",
+    "reward": 10,
+    "icon": "sun",
+    "timeRange": {
+      "start": "06:00",
+      "end": "08:00"
+    }
+  },
+  {
+    "id": "morning-brush-teeth",
+    "name": "刷牙洗脸",
+    "description": "早上刷牙洗脸",
+    "category": "morning",
+    "reward": 5,
+    "icon": "tooth",
+    "timeRange": {
+      "start": "06:00",
+      "end": "09:00"
+    }
+  },
+  {
+    "id": "morning-breakfast",
+    "name": "吃早餐",
+    "description": "吃完早餐再出门",
+    "category": "morning",
+    "reward": 5,
+    "icon": "coffee",
+    "timeRange": {
+      "start": "08:00",
+      "end": "12:00"
+    }
+  },
+  {
+    "id": "afternoon-school",
+    "name": "按时上学",
+    "description": "按时上学不迟到",
+    "category": "afternoon",
+    "reward": 10,
+    "icon": "school",
+    "timeRange": {
+      "start": "08:00",
+      "end": "10:00"
+    }
+  },
+  {
+    "id": "afternoon-homework",
+    "name": "做作业",
+    "description": "认真完成作业",
+    "category": "afternoon",
+    "reward": 15,
+    "icon": "book",
+    "timeRange": {
+      "start": "15:00",
+      "end": "18:00"
+    }
+  },
+  {
+    "id": "evening-dinner",
+    "name": "吃晚餐",
+    "description": "和家人一起吃晚餐",
+    "category": "evening",
+    "reward": 5,
+    "icon": "utensils",
+    "timeRange": {
+      "start": "17:00",
+      "end": "19:00"
+    }
+  },
+  {
+    "id": "evening-bath",
+    "name": "洗澡",
+    "description": "睡前洗澡",
+    "category": "evening",
+    "reward": 5,
+    "icon": "bath",
+    "timeRange": {
+      "start": "19:00",
+      "end": "21:00"
+    }
+  },
+  {
+    "id": "evening-sleep",
+    "name": "按时睡觉",
+    "description": "9点前上床睡觉",
+    "category": "evening",
+    "reward": 10,
+    "icon": "moon",
+    "timeRange": {
+      "start": "20:00",
+      "end": "22:00"
+    }
+  },
+  {
+    "id": "daily-exercise",
+    "name": "运动",
+    "description": "每天运动30分钟",
+    "category": "daily",
+    "reward": 10,
+    "icon": "activity"
+  },
+  {
+    "id": "daily-read",
+    "name": "阅读",
+    "description": "每天阅读15分钟",
+    "category": "daily",
+    "reward": 10,
+    "icon": "book-open"
+  },
+  {
+    "id": "daily-help",
+    "name": "帮忙做家务",
+    "description": "帮助爸爸妈妈做家务",
+    "category": "daily",
+    "reward": 10,
+    "icon": "home"
+  }
+]
