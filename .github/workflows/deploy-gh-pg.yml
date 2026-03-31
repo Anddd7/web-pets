@@ -3,8 +3,9 @@ name: Build and Deploy to gh-pg
 on:
   push:
     branches:
-      - main
+    - main
   workflow_dispatch:
+
 
 permissions:
   contents: write
@@ -18,27 +19,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+    - name: Install dependencies
+      run: npm ci
 
-      - name: Build project
-        run: npm run build
-        env:
-          VITE_BASE_URL: /web-pets/
+    - name: Build project
+      run: npm run build
+      env:
+        VITE_BASE_URL: /web-pets/
 
-      - name: Deploy dist to gh-pg
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pg
-          publish_dir: ./dist
-          force_orphan: true
+    - name: Deploy dist to gh-pg
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pg
+        publish_dir: ./dist
+        force_orphan: true
